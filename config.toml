@@ -18,7 +18,7 @@ highlight_theme = "one-dark"
 [extra]
 # Put all your custom variables here
 juice_logo_name = "Kast"
-juice_logo_path = "logo.png"
+juice_logo_path = "logo.svg"
 juice_extra_menu = [
     { title = "Playground", link = "https://play.kast-lang.org" },
     { title = "Blog", link = "/blog" },
