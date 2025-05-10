@@ -1,5 +1,5 @@
 +++
-title = "Juice"
+title = "Kast"
 sort_by = "weight"
 +++
 
@@ -80,7 +80,7 @@ fn vertex_shader(vertex_data :: (pos: vec3)) -> vertex_shader_output {
   ...
 }
 
-fn my_game() io {
+fn my_game() with io {
   const vertex_shader_glsl :: string = transpile_to_glsl(vertex_shader);
   ...
 }

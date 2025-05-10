@@ -16,7 +16,13 @@
 <ul>
 {% for page in section.pages %}
 <li>
-  <a class="nav-item subtitle-text" href="{{ page.permalink | safe }}">{{ page.date }} - {{ page.title }}</a>
+    <a class="nav-item subtitle-text" href="{{ page.permalink | safe }}">
+        {% if page.date %}
+            {{ page.date }} - {{ page.title }}
+        {% else %}
+            {{ page.title }}
+        {% endif %}
+    </a>
 </li>
 {% endfor %}
 </ul>

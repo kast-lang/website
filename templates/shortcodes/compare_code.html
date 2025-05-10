@@ -1,0 +1,12 @@
+{% set parts = body | split(pat="# SPLIT") %}
+{% set code1 = parts[0] %}
+{% set code2 = parts[1] %}
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        {{ code1 | markdown | safe }}
+    </div>
+    <div style="width: 50%;">
+        {{ code2 | markdown | safe }}
+    </div>
+</div>

@@ -21,6 +21,7 @@ juice_logo_name = "Kast"
 juice_logo_path = "logo.svg"
 juice_extra_menu = [
     { title = "Playground", link = "https://play.kast-lang.org" },
+    { title = "Learn", link = "/learn" },
     { title = "Blog", link = "/blog" },
     { title = "Github", link = "https://github.com/kast-lang/kast" },
 ]
