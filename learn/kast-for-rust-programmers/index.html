@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kast for Rust programmers |  Kast  </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: #FED43F;
+        /* Primary theme text color */
+        --primary-text-color: #543631;
+        --primary-text-color-over: #000;
+        /* Primary theme link color */
+        --primary-link-color: #F9BB2D;
+        /* Secondary color: the background body color */
+        --secondary-color: #fcfaf6;
+        --secondary-text-color: #303030;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #d46e13;
+        --toc-background-color: white;
+        --code-color: #4a4a4a;
+        /* one-dark */
+        --code-background-color: #2b303b;
+
+        --shadow-color: #ddd;
+
+        /* Font used for headers (h1 & h2) */
+        --header-font-family: "Fira Sans", sans-serif;
+        /* Font used for text */
+        --text-font-family: "Fira Sans", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-color: #382929;
+            --primary-text-color: #d7d7d7;
+            --primary-text-color-over: #FFF;
+            --primary-link-color: #9b9b9b;
+            --secondary-color: #282828;
+            --secondary-text-color: #f2f2f2;
+            --toc-highlight-text-color: #f2f2f2;
+            --toc-background-color: #3a3a3a;
+            --code-color: white;
+            /* one-dark */
+            --code-background-color: #2b303b;
+
+            --shadow-color: #202020;
+            --header-font-family: "Fira Sans", sans-serif;
+            --text-font-family: "Fira Sans", sans-serif;
+        }
+    }
+</style>
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="https://kast-lang.org/juice.css">
+    
+    <link rel="stylesheet" href="https://kast-lang.org/carbon.css">
+    
+</head>
+
+<body>
+    
+<header class="box-shadow">
+    
+
+<a href="https://kast-lang.org/">
+    <div class="logo">
+        <img src="https://kast-lang.org/logo.svg" alt="logo">
+        Kast
+    </div>
+</a>
+
+<nav>
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https://play.kast-lang.org">Playground</a>
+        
+        <a class="nav-item subtitle-text" href="/learn">Learn</a>
+        
+        <a class="nav-item subtitle-text" href="/blog">Blog</a>
+        
+        <a class="nav-item subtitle-text" href="https://github.com/kast-lang/kast">Github</a>
+        
+    
+</nav>
+
+</header>
+
+
+    <main>
+        
+        
+        
+        
+        
+        <div class="toc">
+            <div class="toc-sticky">
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://kast-lang.org/learn/kast-for-rust-programmers/#kast-for-rust-programmers">Kast for Rust programmers</a>
+                </div>
+                
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://kast-lang.org/learn/kast-for-rust-programmers/#common-programming-concepts"><small>- Common programming concepts</small></a>
+                </div>
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://kast-lang.org/learn/kast-for-rust-programmers/#generics"><small>- Generics</small></a>
+                </div>
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://kast-lang.org/learn/kast-for-rust-programmers/#macros"><small>- Macros</small></a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        
+
+        <div class="content text">
+            
+<div class="heading-text"></div>
+<h1 id="kast-for-rust-programmers">Kast for Rust programmers</h1>
+<h2 id="common-programming-concepts">Common programming concepts</h2>
+<h3 id="variables-and-mutability">Variables and mutability</h3>
+
+
+
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        <pre data-lang="rust" style="background-color:#2b303b;color:#6c7079;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> x: </span><span style="color:#cd74e8;">i32 </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">5</span><span style="color:#abb2bf;">;
+</span><span style="font-style:italic;color:#5f697a;">// x = 3; // compiler error
+</span><span style="color:#cd74e8;">let mut</span><span style="color:#abb2bf;"> x </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;hi&quot;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">x </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;yo&quot;</span><span style="color:#abb2bf;">;
+</span></code></pre>
+
+    </div>
+    <div style="width: 50%;">
+        <pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let x :: int32 = 5;
+</span><span style="color:#abb2bf;"># x = 3; # compiler error
+</span><span style="color:#abb2bf;">let mut x = &quot;hi&quot;;
+</span><span style="color:#abb2bf;">x = &quot;yo&quot;;
+</span></code></pre>
+
+    </div>
+</div>
+<div style="text-align: center;">
+    <span>Current status:</span>
+    <div>
+        <p><a href="https://github.com/kast-lang/kast/issues/8">mut is not respected currently</a></p>
+
+    </div>
+</div>
+
+
+
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        <pre data-lang="rust" style="background-color:#2b303b;color:#6c7079;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#cd74e8;">const</span><span style="color:#abb2bf;"> C: </span><span style="color:#cd74e8;">u64 </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">123</span><span style="color:#abb2bf;">;
+</span></code></pre>
+
+    </div>
+    <div style="width: 50%;">
+        <pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">comptime let C :: uint64 = 123;
+</span></code></pre>
+
+    </div>
+</div>
+<div style="text-align: center;">
+    <span>Current status:</span>
+    <div>
+        <p>its actually just <code>const C = 123</code> same as Rust for now because of
+<a href="https://github.com/kast-lang/kast/issues/9">technical issues</a></p>
+
+    </div>
+</div>
+<p>Shadowing works same as in rust:</p>
+
+
+
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        <pre data-lang="rust" style="background-color:#2b303b;color:#6c7079;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> x: </span><span style="color:#cd74e8;">i32 </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">;
+</span><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> x </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> x </span><span style="color:#adb7c9;">+ </span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> x </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> x </span><span style="color:#adb7c9;">+ </span><span style="color:#db9d63;">2</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">    println!(</span><span style="color:#9acc76;">&quot;</span><span style="color:#db9d63;">{x}</span><span style="color:#9acc76;">&quot;</span><span style="color:#abb2bf;">); </span><span style="font-style:italic;color:#5f697a;">// prints 3
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#abb2bf;">println!(</span><span style="color:#9acc76;">&quot;</span><span style="color:#db9d63;">{x}</span><span style="color:#9acc76;">&quot;</span><span style="color:#abb2bf;">); </span><span style="font-style:italic;color:#5f697a;">// prints 1
+</span></code></pre>
+
+    </div>
+    <div style="width: 50%;">
+        <pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let x :: int32 = 0;
+</span><span style="color:#abb2bf;">let x = x + 1;
+</span><span style="color:#abb2bf;">(
+</span><span style="color:#abb2bf;">    let x = x + 2;
+</span><span style="color:#abb2bf;">    dbg x; # prints 3
+</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">dbg x; # prints 1
+</span></code></pre>
+
+    </div>
+</div>
+<h3 id="data-types">Data types</h3>
+<p>Same as Rust, Kast is a statically typed language, with similar inference.</p>
+
+
+
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        <pre data-lang="rust" style="background-color:#2b303b;color:#6c7079;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> guess: </span><span style="color:#cd74e8;">u32 </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;42&quot;</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">parse</span><span style="color:#abb2bf;">()
+</span><span style="color:#abb2bf;">    .</span><span style="color:#5ebfcc;">expect</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;Not a number!&quot;</span><span style="color:#abb2bf;">);
+</span></code></pre>
+
+    </div>
+    <div style="width: 50%;">
+        <pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let guess :: uint32 = &quot;42&quot; |&gt; parse;
+</span><span style="color:#abb2bf;"># If parse fails it throws a 
+</span><span style="color:#abb2bf;"># **checked** exception
+</span><span style="color:#abb2bf;"># (it must be handled somewhere)
+</span></code></pre>
+
+    </div>
+</div>
+<p>To help the inference (or assert the type) any expr/pattern can be type ascribed.
+Unlike Rust, type ascription can be used anywhere</p>
+<pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let guess :: uint32 = (&quot;42&quot; :: &amp;string)
+</span><span style="color:#abb2bf;">    |&gt; (parse :: &amp;string -&gt; uint32)
+</span><span style="color:#abb2bf;">    :: uint32;
+</span></code></pre>
+<p>Kast is supposed to depend as little as possible from the target platform,
+giving you way to specify the types from the target like this:
+<code>let int128 :: type = native "int128"</code>;
+The most important target for Kast though is the interpreter,
+which allows you to evaluate the code during compile time.
+Common types are defined in the interpreter but their availability
+on target depends on specific compiler.</p>
+<p>Same as Rust we have scalar types like integers, floating-point numbers, booleans, and characters.
+At the time of writing, we have these:</p>
+<ul>
+<li>bool (true/false)</li>
+<li>int32/int64</li>
+<li>float64</li>
+<li>char</li>
+</ul>
+<h4 id="default-literal-type">Default literal type</h4>
+<p>Unlike Rust, we don't have <code>{integer}</code>/<code>{float}</code> type for literals.
+We also don't have a default type for those literals (by default) -
+type needs to be specified (or inferred).</p>
+<pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let x = 123; # compiler error: number literal type could not be inferred
+</span></code></pre>
+<p>It is also not required to use <code>.</code> for floating point numbers if the type is inferred:
+<code>let x :: float64 = 123;</code>.
+The behaviour of no default can be changed for some sections of code
+with compile time context (more on contexts later).
+Basically, this runs a function that returns the default literal type
+with the literal as a string, at compile time:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">(
+</span><span style="color:#abb2bf;">    comptime with (.default_number_type = _ =&gt; std.int32) :: std.default_number_type;
+</span><span style="color:#abb2bf;">    dbg 123; # inferred as int32
+</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">(
+</span><span style="color:#abb2bf;">    comptime with (.default_number_type = _ =&gt; std.int64) :: std.default_number_type;
+</span><span style="color:#abb2bf;">    dbg 123; # inferred as float64
+</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">(
+</span><span style="color:#abb2bf;">    # mimic Rust behavior
+</span><span style="color:#abb2bf;">    comptime with (
+</span><span style="color:#abb2bf;">        .default_number_type = s =&gt; (
+</span><span style="color:#abb2bf;">            if std.contains (.s, .substring=&quot;.&quot;) then
+</span><span style="color:#abb2bf;">                std.float64
+</span><span style="color:#abb2bf;">            else
+</span><span style="color:#abb2bf;">                std.int32
+</span><span style="color:#abb2bf;">        ),
+</span><span style="color:#abb2bf;">    ) :: std.default_number_type;
+</span><span style="color:#abb2bf;">    dbg 123; # inferred as int32
+</span><span style="color:#abb2bf;">    dbg 123.0; # inferred as float64
+</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">if false then (
+</span><span style="color:#abb2bf;">    # no default - this is going to fail to compile
+</span><span style="color:#abb2bf;">    std.dbg 123;
+</span><span style="color:#abb2bf;">);
+</span></code></pre>
+<p>TODO: not implemented yet, but you also can have number literals be treated as custom types:
+<code>let x :: BigInt = 1238762345761576453124617235476124</code>;</p>
+<p>TODO: hex/octal/binary literals not supported yet</p>
+<h4 id="overflow-behavior">Overflow behavior</h4>
+<p>Overflow behaviour for integers is also working through the context system -
+behavior depends on what is currently chosen.
+By default it is panicking on overflow, but you can change it:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">with saturating (
+</span><span style="color:#abb2bf;">  a + with overflowing (b + c)
+</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;"># for compiler to optimize the checks away
+</span><span style="color:#abb2bf;">with undefined_behavior_on_overflow (
+</span><span style="color:#abb2bf;">  a + b
+</span><span style="color:#abb2bf;">)
+</span></code></pre>
+<div style="text-align: center;">
+    <span>Current status:</span>
+    <div>
+        <p>Not implemented yet</p>
+
+    </div>
+</div>
+<h4 id="tuples-structs">Tuples/structs</h4>
+<p>In Kast, tuples can have both unnamed and named fields at the same time.
+Then, custom structs are just newtyped anonymous tuples.</p>
+
+
+
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        <pre data-lang="rust" style="background-color:#2b303b;color:#6c7079;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#cd74e8;">type </span><span style="color:#abb2bf;">A </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">(</span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">, String)
+</span><span style="color:#cd74e8;">struct </span><span style="color:#abb2bf;">B(</span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">, </span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">);
+</span><span style="color:#cd74e8;">struct </span><span style="color:#abb2bf;">C { </span><span style="color:#eb6772;">x</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">f64</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">y</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">f64 </span><span style="color:#abb2bf;">}
+</span></code></pre>
+
+    </div>
+    <div style="width: 50%;">
+        <pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let A = (int32, string);
+</span><span style="color:#abb2bf;">let B = newtype (int32, int32);
+</span><span style="color:#abb2bf;">let C = newtype (.x = float64, .y = float64);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">let ImpossibleInRust = (int32, float64, .named = string);
+</span></code></pre>
+
+    </div>
+</div>
+<p>As we will see soon, all functions have just a single argument
+and this allow to have functions with unnamed/named arguments</p>
+<p>TODO: also have optional/repeated/kwargs</p>
+<h4 id="lists">Lists</h4>
+<p>For now Kast just has lists as alternative to Rust's <code>Vec</code>.
+Lists will most likely be changed.</p>
+
+
+
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        <pre data-lang="rust" style="background-color:#2b303b;color:#6c7079;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#cd74e8;">let mut</span><span style="color:#abb2bf;"> x: Vec&lt;</span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">&gt; </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">vec![</span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">, </span><span style="color:#db9d63;">2</span><span style="color:#abb2bf;">, </span><span style="color:#db9d63;">3</span><span style="color:#abb2bf;">];
+</span><span style="color:#abb2bf;">x.</span><span style="color:#5ebfcc;">push</span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">123</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">dbg!(x.</span><span style="color:#5ebfcc;">len</span><span style="color:#abb2bf;">());
+</span></code></pre>
+
+    </div>
+    <div style="width: 50%;">
+        <pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let x :: list[int32] = list[1, 2, 3];
+</span><span style="color:#abb2bf;">list_push (&amp;x, 123);
+</span><span style="color:#abb2bf;">dbg (list_length &amp;x);
+</span></code></pre>
+
+    </div>
+</div>
+<h4 id="strings">Strings</h4>
+<p>For now Kast only ha a single type for strings.
+But, the string literals can act both as strings and references to strings
+(depends on inference, defaults to owned string).</p>
+
+
+
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        <pre data-lang="rust" style="background-color:#2b303b;color:#6c7079;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> x </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;hello&quot;</span><span style="color:#abb2bf;">; </span><span style="font-style:italic;color:#5f697a;">// x: &amp;str
+</span><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> x </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">String::new(</span><span style="color:#9acc76;">&quot;world&quot;</span><span style="color:#abb2bf;">); </span><span style="font-style:italic;color:#5f697a;">// x: String
+</span></code></pre>
+
+    </div>
+    <div style="width: 50%;">
+        <pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let x :: &amp;string = &quot;hello&quot;;
+</span><span style="color:#abb2bf;">let x :: string = &quot;world&quot;;
+</span></code></pre>
+
+    </div>
+</div>
+<h3 id="functions">Functions</h3>
+<p>As said before, all functions is Kast have a single argument.
+If you want multiple arguments, you use a tuple as argument.
+Also, all functions work as closures in Kast.</p>
+
+
+
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        <pre data-lang="rust" style="background-color:#2b303b;color:#6c7079;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#cd74e8;">type </span><span style="color:#abb2bf;">F </span><span style="color:#adb7c9;">= </span><span style="color:#cd74e8;">fn</span><span style="color:#abb2bf;">(</span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">) -&gt; String;
+</span><span style="color:#cd74e8;">type </span><span style="color:#abb2bf;">G </span><span style="color:#adb7c9;">= </span><span style="color:#cd74e8;">fn</span><span style="color:#abb2bf;">(</span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">, </span><span style="color:#cd74e8;">f64</span><span style="color:#abb2bf;">) -&gt; </span><span style="color:#cd74e8;">bool</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> foo: </span><span style="color:#cd74e8;">fn</span><span style="color:#abb2bf;">(</span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">, </span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">) -&gt; </span><span style="color:#cd74e8;">i64 </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">|</span><span style="color:#eb6772;">x</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">y</span><span style="color:#abb2bf;">| x </span><span style="color:#adb7c9;">+</span><span style="color:#abb2bf;"> y;
+</span><span style="color:#cd74e8;">fn </span><span style="color:#5cb3fa;">goo</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">x</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">y</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">) -&gt; </span><span style="color:#cd74e8;">i32 </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    x </span><span style="color:#adb7c9;">+</span><span style="color:#abb2bf;"> y
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+
+    </div>
+    <div style="width: 50%;">
+        <pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let F = int32 -&gt; string;
+</span><span style="color:#abb2bf;">let G = (int32, float64) -&gt; bool;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">let foo :: (i32, i32) -&gt; i64 = (x, y) =&gt; x + y;
+</span><span style="color:#abb2bf;">let goo = fn(x :: int32, y :: int32) {
+</span><span style="color:#abb2bf;">    x + y
+</span><span style="color:#abb2bf;">};
+</span></code></pre>
+
+    </div>
+</div>
+<p>Unlike rust, Kast supports recursive closures,
+but it needs to be declared in a recursive scope.
+All the bindings that are introduced in a recursive scope
+become the fields of the resulting struct.</p>
+<pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let rec_scope = rec (
+</span><span style="color:#abb2bf;">  let f = depth =&gt; (
+</span><span style="color:#abb2bf;">    if depth &lt; 3 then (
+</span><span style="color:#abb2bf;">      print &quot;inside f&quot;;
+</span><span style="color:#abb2bf;">      dbg depth;
+</span><span style="color:#abb2bf;">      g (depth + 1);
+</span><span style="color:#abb2bf;">    );
+</span><span style="color:#abb2bf;">  );
+</span><span style="color:#abb2bf;">  let g = depth =&gt; (
+</span><span style="color:#abb2bf;">    print &quot;inside g&quot;;
+</span><span style="color:#abb2bf;">    dbg depth;
+</span><span style="color:#abb2bf;">    f (depth + 1);
+</span><span style="color:#abb2bf;">  );
+</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">rec_scope.f (0 :: int32)
+</span></code></pre>
+<p>Calling a function does not require parentheses: <code>std.print "hello"</code>.
+You can also use pipe operator: <code>"world" |&gt; std.print</code>.</p>
+<h4 id="context-system">Context system</h4>
+<p>Another key feature for Kast in the context system.
+It is similar to effect systems/capabilities/implicit arguments.</p>
+<p>Examples of contexts would be:</p>
+<ul>
+<li>access to io</li>
+<li>exception handlers</li>
+<li>loggers</li>
+<li>unsafe</li>
+<li>async runtime</li>
+</ul>
+<p>Basically, functions in Kast are also having context types
+as another part of function type specification -
+<code>std.print :: &amp;string -&gt; () with output</code>.
+This says that <code>std.print</code> needs access to output in order to be able to be called.</p>
+<p>When calling a function, it is required that the context is available.
+Otherwise there will be a compilation error.</p>
+<p>Contexts can be of any type, and you can introduce a context by providing a value:</p>
+<pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">with (
+</span><span style="color:#abb2bf;">    .write :: &amp;string -&gt; () = text =&gt; launch_the_rocket_with_message text,
+</span><span style="color:#abb2bf;">) :: output;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">std.print &quot;hello, world&quot;;
+</span></code></pre>
+<p>In this case <code>std.print</code> will not write to the stdout but instead launch a rocket.</p>
+<div style="text-align: center;">
+    <span>Current status:</span>
+    <div>
+        <p>Inference needs to be improved</p>
+
+    </div>
+</div>
+<p>As we've seen earlier, contexts may also be introduced at comptime.
+This can be used to change some compiler behavior.</p>
+<h4 id="mutability-with-contexts">Mutability with contexts</h4>
+<p>Mutability in Kast is also done with the context system -
+if a function needs to mutate a variable it means
+that it requires mutable access to the variable.</p>
+<pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let mut x = 0;
+</span><span style="color:#abb2bf;">let inc = () =&gt; x += 1;
+</span><span style="color:#abb2bf;">let dec = () =&gt; x -= 1;
+</span><span style="color:#abb2bf;">inc(); inc(); dec();
+</span><span style="color:#abb2bf;">dbg x; # prints 1
+</span></code></pre>
+<p>This example doesn't compile in Rust but it does in Kast.
+Both functions here only capture the <em>pointer</em> to x, without capturing the access.
+Instead, access is going to be required when calling these functions.
+The full type of <code>inc</code> and <code>dec</code> is <code>() -&gt; () with mutable_access[x]</code>.
+Mutable access context is introduced automatically when declaring a mutable variable.</p>
+<div style="text-align: center;">
+    <span>Current status:</span>
+    <div>
+        <p>Mutability with context system is not implemented yet</p>
+<p>Lifetimes are also planned</p>
+
+    </div>
+</div>
+<h3 id="comments">Comments</h3>
+<h3 id="control-flow">Control flow</h3>
+<h2 id="generics">Generics</h2>
+<p>Generics in Kast are implemented as just functions.
+A generic type is just a function that takes a type and returns a new type.
+A generic function is a function that thats a type and returns a function.</p>
+
+
+
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        <pre data-lang="rust" style="background-color:#2b303b;color:#6c7079;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#cd74e8;">struct </span><span style="color:#abb2bf;">Foo&lt;T&gt; { </span><span style="color:#eb6772;">field</span><span style="color:#abb2bf;">: T }
+</span><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> foo: Foo&lt;</span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">&gt; </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> Foo { field: </span><span style="color:#db9d63;">123 </span><span style="color:#abb2bf;">};
+</span><span style="color:#cd74e8;">fn </span><span style="color:#5cb3fa;">id</span><span style="color:#abb2bf;">&lt;T&gt;(</span><span style="color:#eb6772;">x</span><span style="color:#abb2bf;">: T) { x }
+</span><span style="color:#abb2bf;">
+</span><span style="font-style:italic;color:#5f697a;">// explicit generic arg with turbofish
+</span><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> x </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">id::&lt;</span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">&gt;(</span><span style="color:#db9d63;">123</span><span style="color:#abb2bf;">);
+</span><span style="font-style:italic;color:#5f697a;">// generic arg inferred based on result
+</span><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> x: </span><span style="color:#cd74e8;">i32 </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">id::&lt;</span><span style="color:#adb7c9;">_</span><span style="color:#abb2bf;">&gt;(</span><span style="color:#db9d63;">123</span><span style="color:#abb2bf;">);
+</span><span style="font-style:italic;color:#5f697a;">// generic auto instantiation
+</span><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> x: </span><span style="color:#cd74e8;">i32 </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">id</span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">123</span><span style="color:#abb2bf;">);
+</span></code></pre>
+
+    </div>
+    <div style="width: 50%;">
+        <pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let Foo :: type -&gt; type = T =&gt; (.field = T);
+</span><span style="color:#abb2bf;">let foo :: Foo int32 = ( .field = 123 );
+</span><span style="color:#abb2bf;">let id = (T :: type) =&gt; ((x :: T) =&gt; x);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;"># calling a &quot;generic&quot; function
+</span><span style="color:#abb2bf;">let x = id(int32)(123);
+</span></code></pre>
+
+    </div>
+</div>
+<p>Actually, since we want the generic argument to be inferred sometimes,
+and not be written explicitly Kast does have a dedicated type for it -
+called templates.</p>
+<p>Templates are just functions, but calling and defining them needs a different syntax.
+We can also omit explicitly calling them and use auto instantiation.
+But otherwise they are still just functions.</p>
+<pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">let Foo = forall[T :: type] { .field = T };
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">let foo :: Foo[int32] = ( .field = 123 );
+</span><span style="color:#abb2bf;"># use _ to infer the argument
+</span><span style="color:#abb2bf;">let foo :: Foo[_] = ( .field = 123 :: int32 );
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">let id = forall[T] { (x :: T) =&gt; x };
+</span><span style="color:#abb2bf;"># explicit arg
+</span><span style="color:#abb2bf;">let x = id[int32](123);
+</span><span style="color:#abb2bf;">// arg inferred based on result
+</span><span style="color:#abb2bf;">let x :: int32 = id[_](123);
+</span><span style="color:#abb2bf;">// auto instantiation
+</span><span style="color:#abb2bf;">let x :: int32 = id(123);
+</span></code></pre>
+<h3 id="traits">Traits</h3>
+
+
+
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        <pre data-lang="rust" style="background-color:#2b303b;color:#6c7079;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#cd74e8;">struct </span><span style="color:#abb2bf;">Foo { </span><span style="color:#eb6772;">a</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">i32</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">b</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">i32 </span><span style="color:#abb2bf;">}
+</span><span style="color:#cd74e8;">trait </span><span style="color:#abb2bf;">Clone {
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">fn </span><span style="color:#5cb3fa;">clone</span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">&amp;</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">) -&gt; </span><span style="color:#cd74e8;">Self</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#cd74e8;">impl </span><span style="color:#abb2bf;">Clone </span><span style="color:#cd74e8;">for </span><span style="color:#abb2bf;">Foo {
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">fn </span><span style="color:#5cb3fa;">clone</span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">&amp;</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">) {
+</span><span style="color:#abb2bf;">        (</span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.a, </span><span style="color:#eb6772;">self</span><span style="color:#abb2bf;">.b)
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#cd74e8;">fn </span><span style="color:#5cb3fa;">duplicate</span><span style="color:#abb2bf;">&lt;T: Clone&gt;(</span><span style="color:#eb6772;">x</span><span style="color:#abb2bf;">: T) -&gt; (T, T) {
+</span><span style="color:#abb2bf;">    (
+</span><span style="color:#abb2bf;">        </span><span style="color:#adb7c9;">&lt;</span><span style="color:#abb2bf;">T </span><span style="color:#adb7c9;">as </span><span style="color:#abb2bf;">Clone</span><span style="color:#adb7c9;">&gt;</span><span style="color:#abb2bf;">::clone(</span><span style="color:#adb7c9;">&amp;</span><span style="color:#abb2bf;">x),
+</span><span style="color:#abb2bf;">        &lt;</span><span style="color:#adb7c9;">_ as </span><span style="color:#abb2bf;">Clone&gt;::clone(</span><span style="color:#adb7c9;">&amp;</span><span style="color:#abb2bf;">x),
+</span><span style="color:#abb2bf;">    )
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> foo: (Foo, Foo) </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">duplicate</span><span style="color:#abb2bf;">(Foo { a: </span><span style="color:#db9d63;">1</span><span style="color:#abb2bf;">, b: </span><span style="color:#db9d63;">2 </span><span style="color:#abb2bf;">});
+</span></code></pre>
+
+    </div>
+    <div style="width: 50%;">
+        <pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">const Foo :: type = ( .a = int32, .b = int32);
+</span><span style="color:#abb2bf;">const Clone = forall[Self] {
+</span><span style="color:#abb2bf;">    .clone = &amp;Self -&gt; Self,
+</span><span style="color:#abb2bf;">};
+</span><span style="color:#abb2bf;">impl Foo as Clone = (
+</span><span style="color:#abb2bf;">    .clone = self =&gt; ( .a = (self^).a, .b = (self^).b),
+</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">let duplicate = forall[T] {
+</span><span style="color:#abb2bf;">    fn (x :: T) -&gt; (T, T) {
+</span><span style="color:#abb2bf;">        (
+</span><span style="color:#abb2bf;">            (T as Clone).clone(&amp;x),
+</span><span style="color:#abb2bf;">            (_ as Clone).clone(&amp;x),
+</span><span style="color:#abb2bf;">        )
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">};
+</span><span style="color:#abb2bf;">let foo :: (Foo, Foo) = duplicate ( .a = 1, .b = 2 );
+</span></code></pre>
+
+    </div>
+</div>
+<p>In Kast, trait impls are just normal values, and traits are just types (generic types).
+Since generic types are functions returning types,
+implementing a trait for a type means providing the value with type equal to
+applying that function (template) with argument being the type for which you implement the trait.</p>
+<p><code>T as Trait :: Trait[T]</code> is an expression that retieves the implementation.
+<code>impl T as Trait = Impl :: Trait[T]</code> is how you implement a trait.</p>
+<div style="text-align: center;">
+    <span>Current status:</span>
+    <div>
+        <p>Can only implement for concrete types - no generic implementations yet</p>
+<p>Trait bounds are not implemented yet</p>
+
+    </div>
+</div>
+<h2 id="macros">Macros</h2>
+
+
+
+
+<div style="display: flex; gap: 1rem;">
+    <div style="width: 50%;">
+        <pre data-lang="rust" style="background-color:#2b303b;color:#6c7079;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#5ebfcc;">macro_rules! </span><span style="color:#abb2bf;">my_macro {
+</span><span style="color:#abb2bf;">    (</span><span style="color:#eb6772;">$e</span><span style="color:#abb2bf;">:</span><span style="color:#cd74e8;">expr</span><span style="color:#abb2bf;">) </span><span style="color:#adb7c9;">=&gt; </span><span style="color:#abb2bf;">(
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">let</span><span style="color:#abb2bf;"> x </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">$e</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">        dbg!(x);
+</span><span style="color:#abb2bf;">    )
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#abb2bf;">my_macro!(</span><span style="color:#db9d63;">2 </span><span style="color:#adb7c9;">+ </span><span style="color:#db9d63;">2</span><span style="color:#abb2bf;">);
+</span></code></pre>
+
+    </div>
+    <div style="width: 50%;">
+        <pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">const my_macro = macro (e) =&gt; `(
+</span><span style="color:#abb2bf;">    let x = $e; dbg x
+</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">my_macro!(2 + 2 :: int32);
+</span></code></pre>
+
+    </div>
+</div>
+<p>Macros in Kast are also almost normal functions, but they operate on ASTs.
+In the above example <code>my_macro</code> has type <code>macro ast -&gt; ast</code>,
+so its a function that takes ast and returns ast.</p>
+<p><code>`(some code)</code> is the quoting operator,
+similar to <code>quote!</code> macro from the quote crate in rust -
+it parses the code and produces the ast.
+Inside the quote you can use the unquote operator <code>$</code> to interpolate expressions.</p>
+<p>Kast macro system can be used for extending systax.</p>
+<pre data-lang="kast" style="background-color:#2b303b;color:#6c7079;" class="language-kast "><code class="language-kast" data-lang="kast"><span style="color:#abb2bf;">syntax ternary -&gt; 13.1 = condition &quot;?&quot; then_case &quot;:&quot; else_case;
+</span><span style="color:#abb2bf;">impl syntax ternary = macro (.condition, .then_case, .else_case) =&gt; `(
+</span><span style="color:#abb2bf;">    if $condition then $then_case else $else_case
+</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">let x :: int32 = true ? 1 : 0;
+</span></code></pre>
+<div style="text-align: center;">
+    <span>Current status:</span>
+    <div>
+        <p>ast pattern matching is not implemented yet</p>
+
+    </div>
+</div>
+
+
+        </div>
+
+        
+
+    </main>
+
+    
+<!-- <footer> -->
+<!--     <small class="subtext"> -->
+<!--         <a href="https://kast-lang.org">kast-lang.org</a> -->
+<!--     </small> -->
+<!-- </footer> -->
+
+</body>
+<script>
+    const scrollHandler = entries => {
+        // Find the first entry which intersecting and ratio > 0.9 to highlight.
+        let entry = entries.find(entry => {
+            return entry.isIntersecting && entry.intersectionRatio > 0.9;
+        });
+        if (!entry) return;
+
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        // let url = new URL(`#${entry.target.id}`);
+        let link = document.querySelector(`.toc a[href$="${decodeURIComponent(`#${entry.target.id}`)}"]`)
+        if (link) {
+            link.classList.add("active");
+            link.scrollIntoView({ behavior: "auto", block: "nearest" });
+        }
+    };
+    // Set -100px root margin to improve highlight experience.
+    const observer = new IntersectionObserver(scrollHandler, { threshold: 1 });
+    let items = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    items.forEach(item => observer.observe(item));
+</script>
+
+</html>
