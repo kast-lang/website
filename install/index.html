@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Install Kast |  Kast  </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: #FED43F;
+        /* Primary theme text color */
+        --primary-text-color: #543631;
+        --primary-text-color-over: #000;
+        /* Primary theme link color */
+        --primary-link-color: #F9BB2D;
+        /* Secondary color: the background body color */
+        --secondary-color: #fcfaf6;
+        --secondary-text-color: #303030;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #d46e13;
+        --toc-background-color: white;
+        --code-color: #4a4a4a;
+        /* one-dark */
+        --code-background-color: #2b303b;
+
+        --shadow-color: #ddd;
+
+        /* Font used for headers (h1 & h2) */
+        --header-font-family: "Fira Sans", sans-serif;
+        /* Font used for text */
+        --text-font-family: "Fira Sans", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --primary-color: #382929;
+            --primary-text-color: #d7d7d7;
+            --primary-text-color-over: #FFF;
+            --primary-link-color: #9b9b9b;
+            --secondary-color: #282828;
+            --secondary-text-color: #f2f2f2;
+            --toc-highlight-text-color: #f2f2f2;
+            --toc-background-color: #3a3a3a;
+            --code-color: white;
+            /* one-dark */
+            --code-background-color: #2b303b;
+
+            --shadow-color: #202020;
+            --header-font-family: "Fira Sans", sans-serif;
+            --text-font-family: "Fira Sans", sans-serif;
+        }
+    }
+</style>
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="https://kast-lang.org/juice.css">
+    
+    <link rel="stylesheet" href="https://kast-lang.org/carbon.css">
+    
+</head>
+
+<body>
+    
+<header class="box-shadow">
+    
+
+<a href="https://kast-lang.org/">
+    <div class="logo">
+        <img src="https://kast-lang.org/logo.svg" alt="logo">
+        Kast
+    </div>
+</a>
+
+<nav>
+    
+    
+        
+        <a class="nav-item subtitle-text" href="/install">Install</a>
+        
+        <a class="nav-item subtitle-text" href="https://play.kast-lang.org">Playground</a>
+        
+        <a class="nav-item subtitle-text" href="/learn">Learn</a>
+        
+        <a class="nav-item subtitle-text" href="/blog">Blog</a>
+        
+        <a class="nav-item subtitle-text" href="https://github.com/kast-lang/kast">Github</a>
+        
+    
+</nav>
+
+</header>
+
+
+    <main>
+        
+        
+        
+        
+        
+        <div class="toc">
+            <div class="toc-sticky">
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://kast-lang.org/install/#install-kast">Install Kast</a>
+                </div>
+                
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://kast-lang.org/install/#online-playground"><small>- Online Playground</small></a>
+                </div>
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://kast-lang.org/install/#linux"><small>- Linux</small></a>
+                </div>
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://kast-lang.org/install/#macos"><small>- MacOS</small></a>
+                </div>
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://kast-lang.org/install/#windows"><small>- Windows</small></a>
+                </div>
+                
+                <div class="toc-item-child">
+                    <a class="subtext" href="https://kast-lang.org/install/#nix-flakes"><small>- Nix Flakes</small></a>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+        
+        
+
+        <div class="content text">
+            
+<div class="heading-text"></div>
+<h1 id="install-kast">Install Kast</h1>
+<p><strong>NOTE</strong> This is very alpha</p>
+<h2 id="online-playground">Online Playground</h2>
+<p>You can try Kast in browser:</p>
+<p><a href="https://play.kast-lang.org">https://play.kast-lang.org</a></p>
+<h2 id="linux">Linux</h2>
+<p>Download <a href="https://builds.kast-lang.org/kast-linux.tar.gz">https://builds.kast-lang.org/kast-linux.tar.gz</a></p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#6c7079;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#eb6772;">tar</span><span style="color:#abb2bf;"> xzf kast-linux.tar.gz
+</span><span style="color:#eb6772;">./bin/kast
+</span></code></pre>
+<h2 id="macos">MacOS</h2>
+<p>Download <a href="https://builds.kast-lang.org/kast-macos.tar.gz">https://builds.kast-lang.org/kast-macos.tar.gz</a></p>
+<pre data-lang="sh" style="background-color:#2b303b;color:#6c7079;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#eb6772;">tar</span><span style="color:#abb2bf;"> xzf kast-macos.tar.gz
+</span><span style="color:#eb6772;">./bin/kast
+</span></code></pre>
+<h2 id="windows">Windows</h2>
+<p><strong>TODO</strong></p>
+<h2 id="nix-flakes">Nix Flakes</h2>
+<p>Run directly: <code>nix run github:kast-lang/kast</code>
+Enter temp shell with kast installed: <code>nix shell github:kast-lang/kast</code></p>
+<p>An example flake providing a devShell with kast installed (for <code>nix develop</code>):</p>
+<pre data-lang="nix" style="background-color:#2b303b;color:#6c7079;" class="language-nix "><code class="language-nix" data-lang="nix"><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">  </span><span style="color:#db9d63;">inputs </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    </span><span style="color:#db9d63;">nixpkgs</span><span style="color:#abb2bf;">.</span><span style="color:#db9d63;">url </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;nixpkgs&quot;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">    </span><span style="color:#db9d63;">kast</span><span style="color:#abb2bf;">.</span><span style="color:#db9d63;">url </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;github:kast-lang/kast&quot;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">  };
+</span><span style="color:#abb2bf;">  </span><span style="color:#db9d63;">outputs </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">{ </span><span style="color:#adb7c9;">kast, nixpkgs, ... </span><span style="color:#db9d63;">}</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">let
+</span><span style="color:#abb2bf;">      </span><span style="color:#db9d63;">system </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;x86_64-linux&quot;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">      </span><span style="color:#db9d63;">pkgs </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">import </span><span style="color:#eb6772;">nixpkgs </span><span style="color:#abb2bf;">{ </span><span style="color:#cd74e8;">inherit </span><span style="color:#db9d63;">system</span><span style="color:#abb2bf;">; };
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">in
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">      </span><span style="color:#db9d63;">devShells</span><span style="color:#abb2bf;">.</span><span style="color:#c94e42;">${</span><span style="color:#eb6772;">system</span><span style="color:#c94e42;">} </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">        </span><span style="color:#db9d63;">default </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">pkgs</span><span style="color:#adb7c9;">.</span><span style="color:#eb6772;">mkShell </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">          </span><span style="color:#db9d63;">packages </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">[
+</span><span style="color:#abb2bf;">            </span><span style="color:#eb6772;">kast</span><span style="color:#adb7c9;">.</span><span style="color:#eb6772;">packages</span><span style="color:#adb7c9;">.</span><span style="color:#c94e42;">${</span><span style="color:#eb6772;">system</span><span style="color:#c94e42;">}</span><span style="color:#adb7c9;">.</span><span style="color:#eb6772;">kast
+</span><span style="color:#abb2bf;">          ];
+</span><span style="color:#abb2bf;">        };
+</span><span style="color:#abb2bf;">      };
+</span><span style="color:#abb2bf;">    };
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+
+
+<ul>
+
+</ul>
+
+
+        </div>
+
+        
+
+    </main>
+
+    
+<!-- <footer> -->
+<!--     <small class="subtext"> -->
+<!--         <a href="https://kast-lang.org">kast-lang.org</a> -->
+<!--     </small> -->
+<!-- </footer> -->
+
+</body>
+<script>
+    const scrollHandler = entries => {
+        // Find the first entry which intersecting and ratio > 0.9 to highlight.
+        let entry = entries.find(entry => {
+            return entry.isIntersecting && entry.intersectionRatio > 0.9;
+        });
+        if (!entry) return;
+
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        // let url = new URL(`#${entry.target.id}`);
+        let link = document.querySelector(`.toc a[href$="${decodeURIComponent(`#${entry.target.id}`)}"]`)
+        if (link) {
+            link.classList.add("active");
+            link.scrollIntoView({ behavior: "auto", block: "nearest" });
+        }
+    };
+    // Set -100px root margin to improve highlight experience.
+    const observer = new IntersectionObserver(scrollHandler, { threshold: 1 });
+    let items = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    items.forEach(item => observer.observe(item));
+</script>
+
+</html>
