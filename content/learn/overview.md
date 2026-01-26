@@ -41,16 +41,19 @@ we can still have familiar `for` loops, `return`s from functions,
 **checked** exceptions from other languages implemented as library features:
 
 ```rs
-fn find[T](predicate :: T -> bool, values :: [T]) -> T throws[NotFound] {
-  for value in list {
+const find = [T](
+    predicate :: T -> Bool,
+    values :: [T],
+) -> T throws[:NotFound] => (
+  for value in list do (
     if predicate(value) then
       return value
-  }
-  throw NotFound
-}
+  );
+  throw :NotFound
+);
 
-let result :: Result<int32, NotFound> = try find(x => x % 2 == 0, [1, 2, 3]);
-let value :: int32 = result catch NotFound => -1;
+let result :: Result[Int32, :NotFound] = try find(x => x % 2 == 0, [1, 2, 3]);
+let value :: Int32 = result catch (:NotFound => -1);
 ```
 
 This works as a combination of core features like:
@@ -76,17 +79,19 @@ By having first-class IR (intermetiate representation as value)
 you can write a function that coverts it into the desired target:
 
 ```rs
-fn vertex_shader(vertex_data :: (pos: vec3)) -> vertex_shader_output {
+const vertex_shader = (
+  vertex_data :: { .pos :: Vec3},
+) -> vertex_shader_output => (
   ...
-}
+);
 
-fn my_game() with io {
-  const vertex_shader_glsl :: string = transpile_to_glsl(vertex_shader);
+const my_game = () with io => (
+  const vertex_shader_glsl :: String = transpile_to_glsl(vertex_shader);
   ...
-}
+);
 
-let exe = build_exe(my_game);
-let c_source = transpile_to_c(my_game);
+const exe = build_exe(my_game);
+const c_source = transpile_to_c(my_game);
 ```
 
 # Performance
@@ -100,7 +105,7 @@ If you need recursive data structures (for example construct mutually recursive 
 then they must be explicitly marked as such:
 
 ```rs
-let arena = rec (
+let arena = module (
   let f = () => g();
   let g = () => f();
 );
@@ -125,7 +130,10 @@ Kast is a strongly typed language.
 aka discriminated union / algebraic data type:
 
 ```rs
-let Option = forall T. (Some T | None);
+const Option = [T] newtype (
+  | :Some T
+  | :None
+);
 ```
 
 # Casting
@@ -133,8 +141,8 @@ let Option = forall T. (Some T | None);
 In Kast you can define casting rules:
 
 ```rs
-impl (123 :: int32) as string = "123";
-print (123 :: int32 as string) # prints 123
+impl (123 :: Int32) as String = "123";
+print((123 :: Int32) as String) # prints 123
 ```
 
 By defining casting rules for types we can get trait/typeclass/interfaces:
@@ -151,45 +159,45 @@ This allows you to refer to `Self` in trait definition, or implement traits for 
 (multi-parameter typeclasses) easily.
 
 ```rs
-let Parse = forall Self. (
-  parse: string -> Self
-);
-impl int32 as Parse = (
-  parse: parse_string_to_int32
-);
+let Parse = [Self] newtype {
+  .parse :: String -> Self
+};
+impl Int32 as Parse = {
+  .parse = parse_string_to_int32
+};
 
-let Add = forall (Lhs, Rhs). rec@this (
-  output: type,
-  add: (Lhs, Rhs) -> this.output,
-);
-impl (int32, int64) as Add = (
-  output: int64,
-  add: fn (lhs :: int32, rhs :: int64) -> int64 {
-    (lhs as int64) + rhs
+let Add = [Lhs, Rhs] {
+  .output :: type,
+  .add :: (Lhs, Rhs) -> this.output,
+};
+impl (Int32, Int64) as Add = {
+  .output :: Int64,
+  .add: fn (lhs :: Int32, rhs :: Int64) -> Int64 {
+    (lhs as Int64) + rhs
   },
-);
+};
 ```
 
 ## Tuples
 
 Tuples in Kast can have both named and unnamed fields:
 
-```
-let tuple :: (int32, int64, float32, four: int32, five: int32) =
-  (1, 2, 3, four: 4, five: 5);
+```rs
+let tuple :: { Int32, Int64, Float32, .four :: Int32, .five :: Int32 } =
+  { 1, 2, 3, .four = 4, .five = 5 };
 ```
 
 Variadic length tuples:
 
-```
-let variadic_int :: (*int32) = (1, 2, 3, 4)
+```rs
+let variadic_int :: { *int32 } = { 1, 2, 3, 4 }
 ```
 
 Variadic tuples allow for variadic generics easily:
 
 ```rs
-forall (*fields :: type). (
-  impl (*fields) as Trait = ...
+[*fields :: type] (
+  impl { *fields } as Trait = ...
 )
 ```
 
@@ -205,7 +213,7 @@ Functions can specify contexts that must be in scope when calling them.
 Contexts can be of any type:
 
 ```rs
-fn function_that_allocates_a_lot() with allocator { ... }
+const function_that_allocates_a_lot() with allocator => ( ... )
 ```
 
 This function specifies that a allocator must be present when calling it.
@@ -214,18 +222,18 @@ In a way, function contexts act like implicit arguments (but implemented differe
 In order to bring a context into scope, use `with`:
 
 ```rs
-with ArenaAllocator.new() (
-  function_that_allocates_a_lot()
-)
+with ArenaAllocator.new();
+function_that_allocates_a_lot()
 ```
 
 ## overflows
 
 ```rs
-add_int32 :: (a :: int32, b :: int32) -> int32 with potentially_overflows;
+add_int32 :: (a :: Int32, b :: Int32) -> Int32 with potential_overflows;
 
-with saturating (
-  a + with overflowing (b + c)
+(
+  with saturating_behavior;
+  a + (with wrapping_behavior; b + c)
 )
 
 # for compiler to optimize the checks away
@@ -239,18 +247,18 @@ with undefined_behavior_on_overflow (
 We can declare named blocks that we can return to without executing the rest of the body:
 
 ```rs
-let f = fn (token :: unwind_token) {
+let f = (token :: unwind_token) => (
   ...
-  unwind (.token, .value);
+  unwind token value;
   ...
-};
+);
 unwindable_block f
 ```
 
 `unwindable_block` creates the block and takes a function of type `unwind_token -> T`
 and executes it immediately with the token of that block.
 
-When `unwind :: (.token :: unwind_token, .value :: T)` function is used from within,
+When `unwind` is used from within,
 it stops executing current function and unwinds the stack until we return to the block.
 The value of the block if either the result of executing the function (if `unwind` was not called),
 or the value given to the `unwind`.
@@ -287,7 +295,7 @@ which is then processed recursively until some builtin macro converts it into IR
 Macros in Kast are just like normal functions:
 
 ```rs
-let ternary = macro (.cond :: ast, .then :: ast, .else :: ast) =>
+let ternary = (.cond :: ast, .then :: ast, .else :: ast) =>
   `(if $cond then $then else $else)
 ```
 
