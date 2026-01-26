@@ -1,3 +1,5 @@
+title = "Kast Programming Language"
+
 # The URL the site will be built for
 base_url = "https://kast-lang.org"
 
