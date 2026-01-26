@@ -1,79 +1,174 @@
-{% extends "juice/templates/index.html" %}
+{% import "_macros.html" as macros %}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
 
-{% block title %} Kast {% endblock title %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block favicon %}
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    {% endblock favicon %}
+    {% include "_variables.html" %}
+    {% block fonts %}
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600&display=swap" rel="stylesheet">
+    {% endblock fonts %}
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="{{ get_url(path='theme.css') }}">
+    {% block head %}
+    {% endblock head %}
+</head>
 
-{% block sidebar %}
-{% endblock sidebar %}
+<body>
+    {% block header %}
 
-{% block hero %}
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<section class="text-center">
-    <h1 class="heading-text" style="font-size: 50px">
-        Kast
-    </h1>
-    <h3 class="title-text">
-        A first-class programming language
-    </h3>
-    <p style="color:white">
-        Functions, types, templates, bindings, AST, IR, the compiler itself &mdash;
-        everything is treated as value in Kast, bringing absolute power
-    </p>
-    <div>
-        <a class="github-button" href="https://github.com/kast-lang/kast" data-size="large" data-show-count="true"
-            aria-label="Star Kast on GitHub">Star</a>
-    </div>
-</section>
+    <header class="pos-absolute" style="background-color: transparent">
+        {{ macros::render_header() }}
+    </header>
 
-<section id="showcase" class="hero-image">
-    <link rel="stylesheet" href="{{ get_url(path="tabs.css") }}"/>
-    <script defer src="{{ get_url(path="showcase.js") }}"></script>
+    <div class="hero">
+        {% block hero %}
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <section class="text-center">
+            <h1 class="heading-text" style="font-size: 50px">
+                Kast
+            </h1>
+            <h3 class="title-text">
+                A first-class programming language
+            </h3>
+            <p style="color:white">
+                Functions, types, templates, bindings, AST, IR, the compiler itself &mdash;
+                everything is treated as value in Kast, bringing absolute power
+            </p>
+            <div>
+                <a class="github-button" href="https://github.com/kast-lang/kast" data-size="large"
+                    data-show-count="true" aria-label="Star Kast on GitHub">Star</a>
+            </div>
+        </section>
 
-    <div id="tab-bar">
-        <a class="nav-item subtitle-text" selected onclick="raise(0)" >Hello World</a>
-        <a class="nav-item subtitle-text" onclick="raise(1)" >Fibonacci</a>
-        <a class="nav-item subtitle-text" onclick="raise(2)" >Exceptions</a>
-    </div>
+        <section id="showcase" class="hero-image">
+            <link rel="stylesheet" href="{{ get_url(path='tabs.css') }}" />
+            <script defer src="{{ get_url(path='showcase.js') }}"></script>
 
-    <div id="tabs">
-        <div class="tab" selected>
-            {% set example = load_data(path="static/examples/hello.md") %}
-            {{ example | markdown | safe }}
+            <div id="tab-bar">
+                <a class="nav-item subtitle-text" selected onclick="raise(0)">Hello World</a>
+                <a class="nav-item subtitle-text" onclick="raise(1)">Fibonacci</a>
+                <a class="nav-item subtitle-text" onclick="raise(2)">Exceptions</a>
+            </div>
+
+            <div id="tabs">
+                <div class="tab" selected>
+                    {% set example = load_data(path="static/examples/hello.md") %}
+                    {{ example | markdown | safe }}
+                </div>
+                <div class="tab">
+                    {% set example = load_data(path="static/examples/fibonacci.md") %}
+                    {{ example | markdown | safe }}
+                </div>
+                <div class="tab">
+                    {% set example = load_data(path="static/examples/exceptions.md") %}
+                    {{ example | markdown | safe }}
+                </div>
+            </div>
+        </section>
+
+        <div class="explore-more text"
+            onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
+            Read More ⇩
         </div>
-        <div class="tab">
-            {% set example = load_data(path="static/examples/fibonacci.md") %}
-            {{ example | markdown | safe }}
-        </div>
-        <div class="tab">
-            {% set example = load_data(path="static/examples/exceptions.md") %}
-            {{ example | markdown | safe }}
-        </div>
+        <style>
+            .hero section {
+                padding: 0 5rem;
+            }
+
+            @media screen and (max-width: 768px) {
+                .hero section {
+                    padding: 0 2rem;
+                }
+
+                .hero-image {
+                    display: none !important;
+                }
+            }
+        </style>
+        {% endblock hero %}
     </div>
-</section>
 
-<div class="explore-more text" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
-    Read More ⇩
-</div>
-<style>
-    .hero section {
-        padding: 0 5rem;
-    }
+    {% endblock header %}
 
-    @media screen and (max-width: 768px) {
-        .hero section {
-            padding: 0 2rem;
+    <main>
+        {% block toc %}
+        {% if section.toc %}
+        {% set toc = section.toc %}
+        {% elif page.toc %}
+        {% set toc = page.toc %}
+        {% endif %}
+        {% if toc %}
+        <div class="toc">
+            <div class="toc-sticky">
+                {% for h in toc %}
+                <div class="toc-item">
+                    <a class="subtext" href="{{h.permalink | safe}}">{{ h.title }}</a>
+                </div>
+                {% if h.children %}
+                {% for h2 in h.children %}
+                <div class="toc-item-child">
+                    <a class="subtext" href="{{h2.permalink | safe}}"><small>- {{ h2.title }}</small></a>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endblock toc %}
+
+        <div class="content text">
+            {% block content %}
+            <div id="features" class="heading-text">Overview</div>
+            {{ section.content | safe }}
+            {% endblock content %}
+        </div>
+
+        {% block sidebar %}
+        {# <div class="sidebar">
+            Your can customize the sidebar.
+        </div> #}
+        {% endblock sidebar %}
+    </main>
+
+    {% block footer %}
+    <!-- <footer> -->
+    <!--     <small class="subtext"> -->
+    <!--         <a href="https://kast-lang.org">kast-lang.org</a> -->
+    <!--     </small> -->
+    <!-- </footer> -->
+    {% endblock footer %}
+</body>
+<script>
+    const scrollHandler = entries => {
+        // Find the first entry which intersecting and ratio > 0.9 to highlight.
+        let entry = entries.find(entry => {
+            return entry.isIntersecting && entry.intersectionRatio > 0.9;
+        });
+        if (!entry) return;
+
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+
+        // let url = new URL(`#${entry.target.id}`);
+        let link = document.querySelector(`.toc a[href$="${decodeURIComponent(`#${entry.target.id}`)}"]`)
+        if (link) {
+            link.classList.add("active");
+            link.scrollIntoView({ behavior: "auto", block: "nearest" });
         }
+    };
+    // Set -100px root margin to improve highlight experience.
+    const observer = new IntersectionObserver(scrollHandler, { threshold: 1 });
+    let items = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    items.forEach(item => observer.observe(item));
+</script>
 
-        .hero-image {
-            display: none !important;
-        }
-    }
-</style>
-{% endblock hero %}
-
-{% block footer %}
-<!-- <footer> -->
-<!--     <small class="subtext"> -->
-<!--         <a href="https://kast-lang.org">kast-lang.org</a> -->
-<!--     </small> -->
-<!-- </footer> -->
-{% endblock footer %}
+</html>

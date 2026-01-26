@@ -7,8 +7,6 @@ compile_sass = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
-theme = "juice"
-
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
@@ -17,14 +15,14 @@ highlight_theme = "one-dark"
 
 [extra]
 # Put all your custom variables here
-juice_logo_name = "Kast"
-juice_logo_path = "logo.svg"
-juice_extra_menu = [
+logo_name = "Kast"
+logo_path = "logo.svg"
+extra_menu = [
     { title = "Install", link = "/install" },
     { title = "Playground", link = "https://play.kast-lang.org" },
     { title = "Learn", link = "/learn" },
     { title = "Blog", link = "/blog" },
     { title = "Github", link = "https://github.com/kast-lang/kast" },
 ]
-juice_exclude_menu = ["exclude_from_nav"]
+exclude_menu = ["exclude_from_nav"]
 repository_url = "https://github.com/kast-lang/kast"
