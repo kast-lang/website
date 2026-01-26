@@ -1,3 +1,9 @@
+default:
+    echo hi
+
+prebuild:
+    just highlight
+
 highlight:
     #!/usr/bin/env bash
     for f in static/examples/*.ks; do
@@ -6,6 +12,10 @@ highlight:
             sed '1,/<\/style>/d' > "static/examples/$base.html"
     done
 
+build:
+    just prebuild
+    zola build
+
 serve:
-    just highlight
+    just prebuild
     zola serve
