@@ -1,0 +1,5 @@
+{
+    .roots = {
+        "static/examples/*.ks",
+    },
+}

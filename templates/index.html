@@ -59,16 +59,16 @@
 
             <div id="tabs">
                 <div class="tab" selected>
-                    {% set example = load_data(path="static/examples/hello.md") %}
-                    {{ example | markdown | safe }}
+                    {% set example = load_data(path="static/examples/hello.html") %}
+                    {{ example | safe }}
                 </div>
                 <div class="tab">
-                    {% set example = load_data(path="static/examples/fibonacci.md") %}
-                    {{ example | markdown | safe }}
+                    {% set example = load_data(path="static/examples/fibonacci.html") %}
+                    {{ example | safe }}
                 </div>
                 <div class="tab">
-                    {% set example = load_data(path="static/examples/exceptions.md") %}
-                    {{ example | markdown | safe }}
+                    {% set example = load_data(path="static/examples/guess.html") %}
+                    {{ example | safe }}
                 </div>
             </div>
         </section>
