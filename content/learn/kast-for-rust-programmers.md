@@ -1,6 +1,6 @@
 +++
 title = "Kast for Rust programmers"
-sort_by = "weight"
+weight = 10
 +++
 
 # Comments

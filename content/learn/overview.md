@@ -1,6 +1,6 @@
 +++
 title = "Kast Overview"
-sort_by = "weight"
+weight = 1
 +++
 
 # Current State
