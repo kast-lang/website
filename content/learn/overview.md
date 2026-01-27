@@ -234,12 +234,13 @@ add_int32 :: (a :: Int32, b :: Int32) -> Int32 with potential_overflows;
 (
   with saturating_behavior;
   a + (with wrapping_behavior; b + c)
-)
+);
 
 # for compiler to optimize the checks away
-with undefined_behavior_on_overflow (
+(
+  with undefined_behavior_on_overflow;
   a + b
-)
+);
 ```
 
 # Unwinding

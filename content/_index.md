@@ -19,6 +19,8 @@ Languages core principles are:
 
 Prioritizing being easy to use *once you learn the language*, not while learning.
 
+Prioritizing maintainability rather than prototyping speed.
+
 Type system allows to catch a lot of bugs at compile time
 (borrow checking, side effect tracking, etc).
 
