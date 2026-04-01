@@ -34,3 +34,4 @@ If you want to see some code, take a look at these:
 - [Advent of Code 2025 solutions](https://github.com/kuviman/aoc2025)
 - [Twitch chatbot](https://github.com/kuviman/kuvibot)
 - [Kast's standard library](https://github.com/kast-lang/kast/tree/main/std)
+- [Kast work on self-hosting has started](https://github.com/kast-lang/kast/tree/self-host)
