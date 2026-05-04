@@ -30,14 +30,14 @@
     <div class="hero">
         {% block hero %}
         <script async defer src="https://buttons.github.io/buttons.js"></script>
-        <section class="text-center">
+        <section class="text-center hero-section">
             <h1 class="heading-text" style="font-size: 50px">
                 Kast
             </h1>
             <h3 class="title-text">
                 A first-class programming language
             </h3>
-            <p style="color:white">
+            <p class="text">
                 Functions, types, templates, bindings, AST, IR, the compiler itself &mdash;
                 everything is treated as value in Kast, bringing absolute power
             </p>
@@ -47,7 +47,7 @@
             </div>
         </section>
 
-        <section id="showcase" class="hero-image">
+        <section id="showcase" class="hero-image hero-section">
             <link rel="stylesheet" href="{{ get_url(path='tabs.css') }}" />
             <script defer src="{{ get_url(path='showcase.js') }}"></script>
 
