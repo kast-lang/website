@@ -22,8 +22,7 @@ logo_path = "logo.svg"
 extra_menu = [
     { title = "Install", link = "/install" },
     { title = "Playground", link = "https://play.kast-lang.org" },
-    { title = "Learn", link = "/learn" },
-    { title = "Blog", link = "/blog" },
+    { title = "Docs", link = "/docs" },
     { title = "Github", link = "https://github.com/kast-lang/kast" },
 ]
 exclude_menu = ["exclude_from_nav"]

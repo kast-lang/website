@@ -1,6 +1,7 @@
 +++
 title = "Kast's AST parser"
 description = "Kast's AST parser"
+weight = 10
 +++
 
 In Kast there is no builtin syntax. Except for syntax for adding new syntax.
