@@ -11,12 +11,12 @@
     {% for page in section.pages %}
     {% set exclude_menu = config.extra.exclude_menu | default(value=[]) %}
     {% if exclude_menu is not containing(page.title) %}
-    <a class="nav-item subtitle-text" href="{{ page.permalink | safe }}">{{ page.title }}</a>
+    <a class="nav-item" href="{{ page.permalink | safe }}">{{ page.title }}</a>
     {% endif %}
     {% endfor %}
     {% if config.extra.extra_menu %}
     {% for menu in config.extra.extra_menu %}
-    <a class="nav-item subtitle-text" href="{{ menu.link | safe }}">{{ menu.title }}</a>
+    <a class="nav-item" href="{{ menu.link | safe }}">{{ menu.title }}</a>
     {% endfor %}
     {% endif %}
 </nav>

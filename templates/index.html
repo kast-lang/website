@@ -31,12 +31,12 @@
         {% block hero %}
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <section class="text-center hero-section">
-            <h1 class="heading-text" style="font-size: 50px">
+            <div class="heading-text logo-font" style="font-size: 50px;">
                 Kast
-            </h1>
-            <h3 class="title-text">
+            </div>
+            <div class="title-text">
                 A first-class programming language
-            </h3>
+            </div>
             <p class="text">
                 Functions, types, templates, bindings, AST, IR, the compiler itself &mdash;
                 everything is treated as value in Kast, bringing absolute power
@@ -52,9 +52,9 @@
             <script defer src="{{ get_url(path='showcase.js') }}"></script>
 
             <div id="tab-bar">
-                <a class="nav-item subtitle-text" selected onclick="raise(0)">Hello World</a>
-                <a class="nav-item subtitle-text" onclick="raise(1)">Fibonacci</a>
-                <a class="nav-item subtitle-text" onclick="raise(2)">Guess a number</a>
+                <a class="nav-item" selected onclick="raise(0)">Hello World</a>
+                <a class="nav-item" onclick="raise(1)">Fibonacci</a>
+                <a class="nav-item" onclick="raise(2)">Guess a number</a>
             </div>
 
             <div id="tabs">

@@ -300,7 +300,7 @@ let ternary = (.cond :: ast, .then :: ast, .else :: ast) =>
   `(if $cond then $then else $else)
 ```
 
-Here, we use a quote operator (`` ` ``) to construct the resulting ast
+Here, we use a quote operator `` ` `` to construct the resulting ast
 using already existing syntax.
-The unquote operator (`$`) is replacing the following ident with the ast
+The unquote operator `$` is replacing the following ident with the ast
 that was passed to the macro as argument.

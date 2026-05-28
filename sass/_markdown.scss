@@ -10,27 +10,28 @@
   padding: 1.25em 1.5em;
   white-space: pre;
   word-wrap: normal;
-  background-color: var(--code-background-color);
   color: var(--code-color);
   font-size: .875em;
   font-family: monospace;
+  border: 1px solid var(--border-color);
 }
 
 .content code {
-  background-color: var(--code-background-color);
+  border: 1px solid var(--border-color);
   color: var(--code-color);
   font-size: .875em;
   font-weight: normal;
-  padding: 0.25em 0.5em;
+  padding: 0.1em 0.2em;
   font-family: monospace;
 }
 
 .content pre code {
   padding: 0;
+  border: none;
 }
 
 .content a {
-  color: var(--primary-link-color);
+  color: var(--link-color);
 
   &:hover {
     text-decoration: underline;

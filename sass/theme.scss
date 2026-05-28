@@ -6,7 +6,7 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background-color: var(--secondary-color);
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -30,8 +30,7 @@ p>img {
 }
 
 header {
-  background-color: var(--primary-color);
-  color: var(--primary-text-color);
+  color: var(--text-color);
   padding: 20px 50px;
   display: flex;
   align-items: center;
@@ -39,9 +38,8 @@ header {
 }
 
 .logo {
-  font-family: "Alfa Slab One", serif;
   font-size: 32px;
-  color: var(--primary-text-color);
+  color: var(--text-color);
   display: flex;
   align-items: center;
   margin: 0 40px;
@@ -52,14 +50,25 @@ header {
   }
 }
 
+.logo,
+.logo-font {
+  font-family: "Alfa Slab One", serif;
+}
+
+nav {
+  padding: 1em;
+  border: 5px solid var(--border-color);
+}
+
 .nav-item {
   margin: 0 10px;
   text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
+  font-family: var(--header-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-color);
 
   &:hover {
-    color: var(--primary-text-color-over);
     text-decoration: underline;
   }
 }
@@ -70,7 +79,7 @@ header {
   align-items: center;
   justify-content: space-evenly;
   height: 100vh;
-  background-color: var(--primary-color);
+  // background-color: var(--element-background-color);
   overflow-x: hidden;
   padding: 0 40px;
 
@@ -102,7 +111,7 @@ main {
 
   .toc-item a,
   .toc-item-child a {
-    color: var(--secondary-text-color);
+    color: var(--text-color);
 
     &:hover {
       cursor: pointer;
@@ -123,9 +132,7 @@ main {
 }
 
 .toc-sticky {
-  border-radius: 3px;
-  border-top: 5px solid var(--primary-color);
-  background-color: var(--toc-background-color);
+  border: 5px solid var(--border-color);
   position: sticky;
   position: -webkit-sticky;
   position: -moz-sticky;
@@ -217,63 +224,55 @@ footer {
 code .fg-none {}
 
 code .fg-white {
-  color: #ABB2BF;
+  color: var(--text-color);
 }
 
 code .fg-grey {
-  color: #5C6370;
+  color: gray;
 }
 
 code .fg-green {
-  color: #98C379;
+  color: green;
 }
 
 code .fg-yellow {
-  color: #E5C07B;
+  color: yellow;
 }
 
 code .fg-purple {
-  color: #C678DD;
+  color: purple;
 }
 
 code .fg-magenta {
-  color: #C678DD;
+  color: var(--link-color);
 }
 
 code .fg-blue {
-  color: #61AFEF;
+  color: blue;
 }
 
 code .fg-red {
-  color: #E06C75;
+  color: red;
 }
 
 code .fg-gold {
-  color: #D19A66;
+  color: gold;
 }
 
 code .fg-cyan {
-  color: #56B6C2;
+  color: cyan;
 }
 
 code .fg-black {
-  color: #282C34;
-}
-
-code .fg-light-black {
-  color: #2C323C;
+  color: black;
 }
 
 code .fg-gray {
-  color: #3E4452;
-}
-
-code .fg-faint-gray {
-  color: #3B4048;
+  color: gray;
 }
 
 code .fg-light-gray {
-  color: #5C6370;
+  color: lightgray;
 }
 
 code .fg-linenr {

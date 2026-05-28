@@ -37,6 +37,7 @@ tar xzf kast-macos.tar.gz
 ## Nix Flakes
 
 Run directly: `nix run github:kast-lang/kast`
+
 Enter temp shell with kast installed: `nix shell github:kast-lang/kast`
 
 An example flake providing a devShell with kast installed (for `nix develop`):
