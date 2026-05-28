@@ -24,7 +24,7 @@ Prioritizing maintainability rather than prototyping speed.
 Type system allows to catch a lot of bugs at compile time
 (borrow checking, side effect tracking, etc).
 
-You can [read more about language here](/learn/overview)
+You can [read more about language here](@/docs/overview.md)
 
 # Built with Kast
 
