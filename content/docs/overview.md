@@ -123,7 +123,7 @@ cell types / reference counting / garbage collector are implementable as a libra
 
 # Type system
 
-Kast is a strongly typed language.
+Kast is a typed language, types are checked during compilation, before the program is ran.
 
 ## Sum types
 
