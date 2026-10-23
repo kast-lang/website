@@ -3,6 +3,8 @@ title = "History of Kast"
 weight = 100
 +++
 
+![](recording.gif)
+
 # The beginning
 
 ```
@@ -29,7 +31,9 @@ At some point learning OCaml stopped being the goal.
 The goal is now making Kast.
 Moved to Rust since I'm much more comfortable with it.
 
-In december, [solved 8 days of Advent of Code](https://github.com/kuviman/aoc2024) with Kast.
+Dec 2024: [solved 8 days of Advent of Code](https://github.com/kuviman/aoc2024) with Kast.
+
+![AOC 2024](aoc2024.png)
 
 # Back to OCaml
 
@@ -52,8 +56,10 @@ This time I also build language server as part of the compiler,
 making everything error resilient,
 so we have syntax highlighting, formatting, type info on hover, goto definition, rename, etc.
 
-In december, [solved Advent of Code 2025 fully](https://github.com/kuviman/aoc2025)
+Dec 2025: [solved Advent of Code fully](https://github.com/kuviman/aoc2025)
 using Kast interpreter.
+
+![AOC 2025](aoc2025.png)
 
 # JavaScript
 
@@ -74,11 +80,14 @@ and browser always was one of the most important runtime environments.
 
 Supposed to be a temporary solution, like many others in the future.
 
-Jan 21: Built a [simple game example](https://github.com/kuviman/kast-game-example) with js backend
-Mar 6: A bit more involved [game](https://github.com/kuviman/d2jam3) for Down2Jam 3 game jam
+Jan 21 2026: Built a [simple game example](https://github.com/kuviman/kast-game-example) with js backend
+![kast-game-example](kast-game-example.gif)
+
+Mar 6 2026: A bit more involved [game](https://github.com/kuviman/d2jam3) for Down2Jam 3 game jam
+![Apple Jack](apple-jack.gif)
 
 Performance of transpiled JS was very poor and even such simple game was lagging in the browser.
-Even though generating better JS could be done, we start thinking about C transpiling.
+Even though generating better JS could be done, I start thinking about C transpiling.
 
 # Self Hosting
 
@@ -89,8 +98,10 @@ Date:   Mar 19 2026
     initial commit
 ```
 
-JavaScript transpiler was enough to start working on self-hosting
-After implementing Lexer & Parser,
+JavaScript transpiler was enough to start working on self-hosting.
+
+After implementing Lexer, Parser,
+and basic LSP for syntax highlighting & formatting,
 an idea of an intermediate language came to mind.
 
 # MiniKast
@@ -110,6 +121,8 @@ It took a bit over 2 weeks to have it working good enough
 to make a game with MiniKast for LudumDare -
 transpiling to C + Raylib + Emscripten:
 
+![MegaHonk](megahonk.gif)
+
 [MegaHonk](https://github.com/kuviman/megahonk)
 ```
 commit 0c7a66ebf7fc7ba32c9272a8e0dbef910578b9d8
@@ -127,15 +140,17 @@ Date:   15 2026
 
 Once transpiling to MiniKast was starting,
 I realized its just easier to go directly to C instead,
-so we start implementing C transpiler in bootstrap OCaml version.
+so I start implementing C transpiler in bootstrap OCaml version.
 
 Since a bunch of code was written using JS transpiler,
 the initial C code was using garbage collection
 with [boehmgc](https://github.com/bdwgc/bdwgc).
 
-Sep 11: Made [Scale to Space](https://github.com/kuviman/scale-to-space) for Down2Jam 4
+Sep 11 2026: Made [Scale to Space](https://github.com/kuviman/scale-to-space) for Down2Jam 4
 
 ![Scale to Space](scale-to-space.gif)
+
+Kast transpiled to C + SDL3 + OpenGL + Emscripten
 
 C transpiler was performing much better than JS but this game still
 needed improvements, especially in browsers.
@@ -166,6 +181,10 @@ but it works for C++ so it shouldn't be a big deal.
 Later I plan for destructive Rust-like move semantics &
 borrow checker.
 
+Oct 17 2026: Another quick game was made for LudumDare 60 to test no-gc Kast,
+and let another person try out the language
+![Bonk to the Future](bonk-to-the-future.gif)
+
 # Here we are
 
-to be continued
+to be continued...
